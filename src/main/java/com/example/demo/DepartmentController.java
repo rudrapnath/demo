@@ -28,4 +28,11 @@ public class DepartmentController {
         return ResponseEntity.ok(departmentService.saveDepartment(department));
     }
 
+    @GetMapping("/departments")
+
+    public List<Employee> fetchDepartmentList()
+    {
+        return departmentService.fetchDepartmentList();
+    }
+
 }
