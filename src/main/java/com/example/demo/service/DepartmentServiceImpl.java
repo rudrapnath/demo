@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.service;
 // Java Program to Illustrate DepartmentServiceImpl.java
 // File
 
@@ -7,6 +7,9 @@ package com.example.demo;
 // Importing required classes
 import java.util.List;
 import java.util.Objects;
+
+import com.example.demo.entity.Department;
+import com.example.demo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,26 +24,26 @@ public class DepartmentServiceImpl
 
     // Save operation
     @Override
-    public Employee saveDepartment(Employee department)
+    public Department saveDepartment(Department department)
     {
         return departmentRepository.save(department);
     }
 
     // Read operation
-    @Override public List<Employee> fetchDepartmentList()
+    @Override public List<Department> fetchDepartmentList()
     {
-        return (List<Employee>)
+        return (List<Department>)
                 departmentRepository.findAll();
     }
 
     // Update operation
     @Override
-    public Employee
-    updateDepartment(Employee department,
+    public Department
+    updateDepartment(Department department,
                      Long departmentId)
     {
 
-        Employee depDB
+        Department depDB
                 = departmentRepository.findById(departmentId)
                 .get();
 

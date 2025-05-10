@@ -1,10 +1,12 @@
-package com.example.demo;
+package com.example.demo.controller;
 // Java Program to Illustrate DepartmentController.java File
 
 // Importing packages modules
 import java.util.List;
 // Importing required classes
 //import javax.validation.Valid;
+import com.example.demo.service.DepartmentService;
+import com.example.demo.entity.Department;
 import com.example.demo.entity.DepartmentWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,7 @@ public class DepartmentController {
     public ResponseEntity saveDepartment(
             @RequestBody DepartmentWrapper deptWrapper)
     {
-        Employee department=new Employee();
+        Department department=new Department();
         department.setDepartmentAddress(deptWrapper.getDepartmentAddress());
         department.setDepartmentName(deptWrapper.getDepartmentName());
         department.setDepartmentCode(deptWrapper.getDepartmentCode());
@@ -37,9 +39,20 @@ public class DepartmentController {
 
     @GetMapping("/departments")
 
-    public List<Employee> fetchDepartmentList()
+    public List<Department> fetchDepartmentList()
     {
         return departmentService.fetchDepartmentList();
+    }
+
+    // Delete operation
+    @DeleteMapping("/departments/{id}")
+
+    public String deleteDepartmentById(@PathVariable("id")
+                                       Long departmentId)
+    {
+        departmentService.deleteDepartmentById(
+                departmentId);
+        return "Deleted Successfully";
     }
 
 }

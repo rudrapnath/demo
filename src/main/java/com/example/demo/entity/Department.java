@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employee {
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
