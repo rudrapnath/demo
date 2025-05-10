@@ -5,6 +5,7 @@ package com.example.demo.controller;
 import java.util.List;
 // Importing required classes
 //import javax.validation.Valid;
+import com.example.demo.entity.Response;
 import com.example.demo.service.DepartmentService;
 import com.example.demo.entity.Department;
 import com.example.demo.entity.DepartmentWrapper;
@@ -57,10 +58,22 @@ public class DepartmentController {
 
     @GetMapping("/departmentById/{id}")
 
-    public Department fetchDepartment(@PathVariable("id")
+    public Response fetchDepartment(@PathVariable("id")
                                                 Long departmentId)
     {
-        return departmentService.fetchDepartmentById(departmentId);
+
+        Department dept= departmentService.fetchDepartmentById(departmentId);
+        if(dept==null) {
+            Response response=new Response("Department  not present!");
+            return response;
+        }
+        else{
+            Response response=new Response();
+            response.setDepartmentAddress(dept.getDepartmentAddress());
+            response.setDepartmentName(dept.getDepartmentName());
+            response.setDepartmentCode(dept.getDepartmentCode());
+            return response;
+        }
     }
 
 }

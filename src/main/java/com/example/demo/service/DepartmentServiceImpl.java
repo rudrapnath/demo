@@ -81,8 +81,11 @@ public class DepartmentServiceImpl
 
     @Override
     public Department fetchDepartmentById(Long departmentId) {
+        if(departmentRepository.existsById(departmentId))
         return departmentRepository.findById(departmentId)
                     .get();
+        else
+            return null;
 
     }
 
