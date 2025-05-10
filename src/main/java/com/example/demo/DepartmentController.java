@@ -5,6 +5,7 @@ package com.example.demo;
 import java.util.List;
 // Importing required classes
 //import javax.validation.Valid;
+import com.example.demo.entity.DepartmentWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,18 @@ public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
 
+
+
     // Save operation
     @PostMapping("/departments")
 
     public ResponseEntity saveDepartment(
-            @RequestBody Employee department)
+            @RequestBody DepartmentWrapper deptWrapper)
     {
+        Employee department=new Employee();
+        department.setDepartmentAddress(deptWrapper.getDepartmentAddress());
+        department.setDepartmentName(deptWrapper.getDepartmentName());
+        department.setDepartmentCode(deptWrapper.getDepartmentCode());
         return ResponseEntity.ok(departmentService.saveDepartment(department));
     }
 
