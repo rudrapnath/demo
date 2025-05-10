@@ -55,4 +55,12 @@ public class DepartmentController {
         return "Deleted Successfully";
     }
 
+    @GetMapping("/departmentById/{id}")
+
+    public Department fetchDepartment(@PathVariable("id")
+                                                Long departmentId)
+    {
+        return departmentService.fetchDepartmentById(departmentId);
+    }
+
 }

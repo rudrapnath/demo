@@ -22,4 +22,7 @@ public interface DepartmentService {
 
     // Delete operation
     void deleteDepartmentById(Long departmentId);
+
+    // Read operation
+    Department fetchDepartmentById(Long departmentId);
 }

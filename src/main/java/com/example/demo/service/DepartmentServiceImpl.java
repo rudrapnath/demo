@@ -78,4 +78,12 @@ public class DepartmentServiceImpl
     {
         departmentRepository.deleteById(departmentId);
     }
+
+    @Override
+    public Department fetchDepartmentById(Long departmentId) {
+        return departmentRepository.findById(departmentId)
+                    .get();
+
+    }
+
 }
