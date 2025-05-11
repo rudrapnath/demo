@@ -8,6 +8,7 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Objects;
 
+import com.example.demo.controller.DepartmentNotExistException;
 import com.example.demo.entity.Department;
 import com.example.demo.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,12 +81,14 @@ public class DepartmentServiceImpl
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        if(departmentRepository.existsById(departmentId))
-        return departmentRepository.findById(departmentId)
+    public Department fetchDepartmentById(Long departmentId)  {
+        if(departmentRepository.existsById(departmentId)) {
+            return departmentRepository.findById(departmentId)
                     .get();
-        else
-            return null;
+        }
+        else {
+            throw new DepartmentNotExistException("Department not found");
+        }
 
     }
 

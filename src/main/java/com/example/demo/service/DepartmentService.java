@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 // Importing packages
 // Importing required classes
+import com.example.demo.controller.DepartmentNotExistException;
 import com.example.demo.entity.Department;
 
 import java.util.List;
@@ -24,5 +25,5 @@ public interface DepartmentService {
     void deleteDepartmentById(Long departmentId);
 
     // Read operation
-    Department fetchDepartmentById(Long departmentId);
+    Department fetchDepartmentById(Long departmentId) ;
 }

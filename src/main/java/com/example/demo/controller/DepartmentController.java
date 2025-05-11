@@ -58,12 +58,12 @@ public class DepartmentController {
 
     @GetMapping("/departmentById/{id}")
 
-    public Response fetchDepartment(@PathVariable("id")
+    public Department fetchDepartment(@PathVariable("id")
                                                 Long departmentId)
     {
 
-        Department dept= departmentService.fetchDepartmentById(departmentId);
-        if(dept==null) {
+        return departmentService.fetchDepartmentById(departmentId);
+       /* if(dept==null) {
             Response response=new Response("Department  not present!");
             return response;
         }
@@ -73,7 +73,7 @@ public class DepartmentController {
             response.setDepartmentName(dept.getDepartmentName());
             response.setDepartmentCode(dept.getDepartmentCode());
             return response;
-        }
+        }*/
     }
 
 }
