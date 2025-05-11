@@ -63,17 +63,7 @@ public class DepartmentController {
     {
 
         return departmentService.fetchDepartmentById(departmentId);
-       /* if(dept==null) {
-            Response response=new Response("Department  not present!");
-            return response;
-        }
-        else{
-            Response response=new Response();
-            response.setDepartmentAddress(dept.getDepartmentAddress());
-            response.setDepartmentName(dept.getDepartmentName());
-            response.setDepartmentCode(dept.getDepartmentCode());
-            return response;
-        }*/
+
     }
 
 }

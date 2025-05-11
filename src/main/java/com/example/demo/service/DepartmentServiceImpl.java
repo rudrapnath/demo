@@ -77,7 +77,15 @@ public class DepartmentServiceImpl
     @Override
     public void deleteDepartmentById(Long departmentId)
     {
-        departmentRepository.deleteById(departmentId);
+        if(departmentRepository.existsById(departmentId)) {
+            departmentRepository.deleteById(departmentId);
+        }
+        else {
+            throw new DepartmentNotExistException("Department not found");
+        }
+
+
+
     }
 
     @Override
