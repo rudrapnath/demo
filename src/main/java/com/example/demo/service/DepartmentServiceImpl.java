@@ -52,10 +52,15 @@ public class DepartmentServiceImpl
     updateDepartment(Department department,
                      Long departmentId)
     {
+        Department depDB= null;
+       if(departmentRepository.existsById(departmentId)) {
+            depDB= departmentRepository.findById(departmentId)
+                    .get();
+        }
+        else {
+            throw new DepartmentNotExistException("Department not found");
+        }
 
-        Department depDB
-                = departmentRepository.findById(departmentId)
-                .get();
 
         if (Objects.nonNull(department.getDepartmentName())
                 && !"".equalsIgnoreCase(

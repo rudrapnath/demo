@@ -66,4 +66,13 @@ public class DepartmentController {
 
     }
 
+    @PutMapping("/departments/{id}")
+    public Department
+    updateDepartment(@RequestBody Department department,
+                     @PathVariable("id") Long departmentId)
+    {
+        return departmentService.updateDepartment(
+                department, departmentId);
+    }
+
 }
