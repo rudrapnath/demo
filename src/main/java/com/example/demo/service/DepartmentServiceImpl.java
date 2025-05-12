@@ -27,7 +27,16 @@ public class DepartmentServiceImpl
     @Override
     public Department saveDepartment(Department department)
     {
-        return departmentRepository.save(department);
+        if (Objects.nonNull(department.getDepartmentCode())
+                && !"".equalsIgnoreCase(
+                department.getDepartmentCode())) {
+            return departmentRepository.save(department);
+        }
+        else
+            throw new DepartmentNotExistException("Department code invalid");
+
+
+
     }
 
     // Read operation
@@ -69,7 +78,8 @@ public class DepartmentServiceImpl
             depDB.setDepartmentCode(
                     department.getDepartmentCode());
         }
-
+        else
+            throw new DepartmentNotExistException("Department code invalid");
         return departmentRepository.save(depDB);
     }
 
